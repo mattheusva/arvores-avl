@@ -38,17 +38,21 @@ public class ArvoreAVL {
     // MÉTODOS PRIVADOS
     /* vitoria */
     private int altura(No no) {
-        if (no == null) return 0;
-        return no.getAltura();
+        if (no == null) {
+            return 0;
+        } else {
+            int alturaEsquerda = altura(no.getEsquerda());
+            int alturaDireita = altura(no.getDireita());
+
+            return 1 + Math.max(alturaEsquerda, alturaDireita);
+        }
     }
 
     /* vitoria */
     /* calcula a diferença da altura da esquerda e direita
      * é utilizado para saber se a árvore precisa ser rotacionada */
     private int fatorBalanceamento(No no) {
-        //fb = altura(no.getEsquerda()) - altura(no.getDireita())
-        //return fb;
-        return 0; // só para compilar por enquanto
+        return altura(no.getEsquerda()) - altura(no.getDireita());
     }
 
     /* vitoria */
@@ -63,7 +67,41 @@ public class ArvoreAVL {
 
     /* vitoria */
     private No inserirRec(No no, int valor) {
-        return null; // só para compilar por enquanto
+        if (no == null) {
+            no = new No(valor);
+            return no;
+        } else if (no.getValor() < valor) {
+            // no.esquerda = inserir(no.esquerda, valor);
+        } else if (no.getValor() > valor) {
+            // no.direita = inserir(no.direita, valor);
+        }
+
+        no.setAltura(1 + Math.max(altura(no.getEsquerda()), altura(no.getDireita())));
+        int fb = fatorBalanceamento(no);
+
+
+        // left-left
+        if (fb > 1 && valor < no.getEsquerda().getValor()) {
+            rotacaoDireita(no);
+        // left-right
+        } else if (fb > 1 && valor > no.getEsquerda().getValor()) {
+            // no.getEsquerda = rotacaoEsquerda(no.getEsquerda());
+            return rotacaoDireita(no);
+        // right-right
+        } else if (fb < -1 && valor > no.getDireita().getValor()) {
+            rotacaoEsquerda(no);
+        // right-left
+        } else if (fb < -1 && valor < no.getDireita().getValor()) {
+            // no.getDireita = rotacaoDireita(no.getDireita());
+            return rotacaoEsquerda(no);
+        } else {
+            return no;
+        }
+
+        // cada vez que eu passar, devo salvar em uma lista o caminho percorrido?
+        // String arvore = imprimirArvore("");
+        // return arvore; 
+        return null;
     }
 
     private No removerRec(No no, int valor) {
