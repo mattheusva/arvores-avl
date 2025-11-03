@@ -4,7 +4,11 @@ public class ArvoreAVL {
     // MÉTODOS PÚBLICOS
     /* vitoria */
     public void inserir(int valor) {
-        // só para compilar por enquanto
+        if (raiz == null) {
+            raiz = new No(valor);
+        } else {
+            inserirRec(raiz, valor);
+        }
     }
 
     public void remover(int valor) {
@@ -49,59 +53,72 @@ public class ArvoreAVL {
     }
 
     /* vitoria */
-    /* calcula a diferença da altura da esquerda e direita
-     * é utilizado para saber se a árvore precisa ser rotacionada */
     private int fatorBalanceamento(No no) {
         return altura(no.getEsquerda()) - altura(no.getDireita());
     }
 
     /* vitoria */
     private No rotacaoDireita(No y) {
-        return null; // só para compilar por enquanto
+        No x = y.getEsquerda();
+        No temp = x.getDireita();
+
+        x.setDireita(y);
+        y.setEsquerda(temp);
+
+        y.setAltura(1 + Math.max(altura(y.getEsquerda()), altura(y.getDireita())));
+        x.setAltura(1 + Math.max(altura(x.getEsquerda()), altura(x.getDireita())));
+
+        return x;
     }
     
     /* vitoria */
     private No rotacaoEsquerda(No x) {
-        return null; // só para compilar por enquanto
+        No y = x.getDireita();
+        No temp = y.getEsquerda();
+
+        y.setEsquerda(x);
+        x.setDireita(temp);
+
+        x.setAltura(1 + Math.max(altura(x.getEsquerda()), altura(x.getDireita())));
+        y.setAltura(1 + Math.max(altura(y.getEsquerda()), altura(y.getDireita())));
+
+        return y;
     }
 
     /* vitoria */
     private No inserirRec(No no, int valor) {
-        if (no == null) {
-            no = new No(valor);
+        if (valor < no.getValor()) {
+            if (no.getEsquerda() == null) {
+                no.setEsquerda(new No(valor));
+            } else {
+                inserirRec(no.getEsquerda(), valor);
+            }
+        } else if (valor > no.getValor()) {
+            if (no.getDireita() == null) {
+                no.setDireita(new No(valor));
+            } else {
+                inserirRec(no.getDireita(), valor);
+            }
+        } else {
             return no;
-        } else if (no.getValor() < valor) {
-            // no.esquerda = inserir(no.esquerda, valor);
-        } else if (no.getValor() > valor) {
-            // no.direita = inserir(no.direita, valor);
         }
 
         no.setAltura(1 + Math.max(altura(no.getEsquerda()), altura(no.getDireita())));
         int fb = fatorBalanceamento(no);
 
-
-        // left-left
         if (fb > 1 && valor < no.getEsquerda().getValor()) {
             rotacaoDireita(no);
-        // left-right
         } else if (fb > 1 && valor > no.getEsquerda().getValor()) {
-            // no.getEsquerda = rotacaoEsquerda(no.getEsquerda());
+            no.setEsquerda(rotacaoEsquerda(no.getEsquerda()));
             return rotacaoDireita(no);
-        // right-right
         } else if (fb < -1 && valor > no.getDireita().getValor()) {
             rotacaoEsquerda(no);
-        // right-left
         } else if (fb < -1 && valor < no.getDireita().getValor()) {
-            // no.getDireita = rotacaoDireita(no.getDireita());
+            no.setDireita(rotacaoDireita(no.getDireita()));
             return rotacaoEsquerda(no);
-        } else {
-            return no;
         }
 
-        // cada vez que eu passar, devo salvar em uma lista o caminho percorrido?
-        // String arvore = imprimirArvore("");
-        // return arvore; 
-        return null;
+        return no;
     }
 
     private No removerRec(No no, int valor) {
