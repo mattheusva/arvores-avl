@@ -26,15 +26,15 @@ public class Main {
 
             try {
                 switch (cmd) {
-                    // case "i": {
-                    //     if (parts.length != 2) break;
-                    //     int v = Integer.parseInt(parts[1]);
-                    //     if (arvore.contem(v)) printlnLF("Ignorado: duplicado " + v);
-                    //     else { arvore.inserir(v); printlnLF("OK: inserido " + v); }
-                    //     printlnLF("Árvore:");
-                    //     System.out.print(arvore.imprimirArvore());
-                    //     break;
-                    // }
+                    case "i": {
+                        if (parts.length != 2) break;
+                        int v = Integer.parseInt(parts[1]);
+                        if (arvore.contem(v)) printlnLF("Ignorado: duplicado " + v);
+                        else { arvore.inserir(v); printlnLF("OK: inserido " + v); }
+                        printlnLF("Árvore:");
+                        System.out.print(arvore.imprimirArvore());
+                        break;
+                    }
                     // case "r": {
                     //     if (parts.length != 2) break;
                     //     int v = Integer.parseInt(parts[1]);
@@ -50,9 +50,9 @@ public class Main {
                     //     arvore.buscar(v);
                     //     break;
                     // }
-                    // case "pre": printlnLF("Pré-Ordem: " + arvore.percursoPreOrdem()); break;
-                    // case "em":  printlnLF("Em-Ordem: " + arvore.percursoEmOrdem()); break;
-                    // case "pos": printlnLF("Pós-Ordem: " + arvore.percursoPosOrdem()); break;
+                    case "pre": printlnLF("Pré-Ordem: " + arvore.percursoPreOrdem()); break;
+                    case "em":  printlnLF("Em-Ordem: " + arvore.percursoEmOrdem()); break;
+                    case "pos": printlnLF("Pós-Ordem: " + arvore.percursoPosOrdem()); break;
                     default: break;
                 }
             } catch (NumberFormatException e) { /* ignora entradas inválidas */ }
