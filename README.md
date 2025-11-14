@@ -59,10 +59,10 @@ O objetivo é demonstrar domínio das operações fundamentais de árvores balan
 ### 🛠️ Compilando
 No diretório raiz do projeto:
 ```
-javac src/*.java
+javac No.java ArvoreAVL.java Main.java
 ```
 
 ### ▶️ Executando
 ```
-java -cp src Main
+java Main
 ```
