@@ -39,7 +39,7 @@ O objetivo é demonstrar domínio das operações fundamentais de árvores balan
 
 ---
 
-### Matheus de Aguiar Vargas  
+### MATHEUS DE AGUIAR VARGAS
 **Responsável pelos métodos:**
 - percursoPreOrdem  
 - percursoEmOrdem  
