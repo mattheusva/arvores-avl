@@ -46,7 +46,7 @@ public class ArvoreAVL {
 
         return x;
     }
-    
+
     /* vitoria */
     private No rotacaoEsquerda(No x) {
         No y = x.getDireita();
@@ -100,7 +100,6 @@ public class ArvoreAVL {
     public String percursoPreOrdem() {
         StringBuilder sb = new StringBuilder();
         percursoPreOrdemRec(raiz, sb);
-        // remove última vírgula e espaço, se existirem
         if (sb.length() >= 2)
             sb.setLength(sb.length() - 2);
         return sb.toString();
