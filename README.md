@@ -19,7 +19,7 @@ O objetivo é demonstrar domínio das operações fundamentais de árvores balan
 
 ## 👨‍💻 Autores  
 
-### Pessoa 1  
+### VITÓRIA MÜLLER BECKER
 **Responsável pelos métodos:**
 - inserir  
 - inserirRec  
@@ -30,7 +30,7 @@ O objetivo é demonstrar domínio das operações fundamentais de árvores balan
 
 ---
 
-### Pessoa 2  
+### FERNANDO SANTOS RODRIGUES
 **Responsável pelos métodos:**
 - remover  
 - removerRec  

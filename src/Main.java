@@ -35,21 +35,21 @@ public class Main {
                         System.out.print(arvore.imprimirArvore());
                         break;
                     }
-                    // case "r": {
-                    //     if (parts.length != 2) break;
-                    //     int v = Integer.parseInt(parts[1]);
-                    //     if (!arvore.contem(v)) printlnLF("Ignorado: inexistente " + v);
-                    //     else { arvore.remover(v); printlnLF("OK: removido " + v); }
-                    //     printlnLF("Árvore:");
-                    //     System.out.print(arvore.imprimirArvore());
-                    //     break;
-                    // }
-                    // case "b": {
-                    //     if (parts.length != 2) break;
-                    //     int v = Integer.parseInt(parts[1]);
-                    //     arvore.buscar(v);
-                    //     break;
-                    // }
+                    case "r": {
+                        if (parts.length != 2) break;
+                        int v = Integer.parseInt(parts[1]);
+                        if (!arvore.contem(v)) printlnLF("Ignorado: inexistente " + v);
+                        else { arvore.remover(v); printlnLF("OK: removido " + v); }
+                        printlnLF("Árvore:");
+                        System.out.print(arvore.imprimirArvore());
+                        break;
+                    }
+                    case "b": {
+                        if (parts.length != 2) break;
+                        int v = Integer.parseInt(parts[1]);
+                        arvore.buscar(v);
+                        break;
+                    }
                     case "pre": printlnLF("Pré-Ordem: " + arvore.percursoPreOrdem()); break;
                     case "em":  printlnLF("Em-Ordem: " + arvore.percursoEmOrdem()); break;
                     case "pos": printlnLF("Pós-Ordem: " + arvore.percursoPosOrdem()); break;
